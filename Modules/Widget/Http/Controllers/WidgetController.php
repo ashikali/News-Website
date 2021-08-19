@@ -145,8 +145,8 @@ class WidgetController extends Controller
         return redirect()->route('widgets')->with('success', __('successfully_added'));
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id){
+
         //
     }
 }

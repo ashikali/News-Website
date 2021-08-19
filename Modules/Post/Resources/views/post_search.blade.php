@@ -161,7 +161,7 @@
                                             <td>
                                                 <label class="category-label m-r-5 label-table"
                                                       id="breaking-post-bgc">
-                                                    {{ $post->category['category_name'] }} </label>
+                                                    {{ $post->category->category_name }} </label>
 
                                             </td>
                                             <td>
@@ -176,7 +176,7 @@
                                             </td>
                                             <td class="td-post-sp">
                                                 @if($post->visibility==1)
-                                                    <label class="label label-success label-table"><i
+                                                   <label class="label label-success label-table"><i
                                                             class="fa fa-eye"></i></label>
                                                 @else
                                                     <label class="label label-default label-table"><i

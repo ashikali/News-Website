@@ -154,7 +154,7 @@
                                             <td>
                                                 <label class="category-label m-r-5 label-table"
                                                       id="breaking-post-bgc">
-                                                    {{ @$post->category['category_name'] }} </label>
+                                                    {{ @$post->category->category_name }} </label>
 
                                             </td>
                                             <td>

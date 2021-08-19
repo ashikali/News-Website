@@ -126,7 +126,7 @@
     <script src="{{static_asset('vendor')}}/datepicker/moment.js"></script>
     <script src="{{static_asset('vendor')}}/datepicker/tempusdominus-bootstrap-4.js"></script>
     <script src="{{static_asset('vendor')}}/datepicker/datepicker.js"></script>
-    <script type="text/javascript" src="{{static_asset('js/custom.min.js')}}"></script>
+    <script type="text/javascript" src="{{static_asset('js/custom.js')}}"></script>
 
 
     <script src="{{static_asset('js/flatpickr.js') }}"></script>

@@ -29,13 +29,14 @@ use Modules\Ads\Entities\Ad;
 
 class PostController extends Controller
 {
-    public function index()
-    {
+    public function index(){
+
         $categories     = Category::all();
         $activeLang     = Language::where('status', 'active')->orderBy('name', 'ASC')->get();
-        $posts          = Post::orderBy('id','desc')->with('image','video','category','subCategory','user')->paginate('15');
+        $posts          = Post::orderBy('id','desc')->paginate('15');
 
         return view('post::index',compact('posts','categories','activeLang'));
+
     }
 
     public function createArticle()
@@ -619,6 +620,7 @@ class PostController extends Controller
     }
 
     public function filterPost(Request $request){
+
         $categories         = Category::all();
         if($request->category_id == null):
             $subCategories  = [];
@@ -629,17 +631,30 @@ class PostController extends Controller
         $activeLang         = Language::where('status', 'active')->orderBy('name', 'ASC')->get();
         $search_query       = $request;
 
-        $posts = Post::where('language', 'like', '%' . $request->language .'%')
-                ->where('post_type', 'like', '%' . $request->post_type .'%')
-                ->where('category_id', 'like', '%' . $request->category_id .'%')
-                ->where('sub_category_id', 'like', '%' . $request->sub_category_id .'%')
-                ->where('title', 'like', '%' . $request->search_key .'%')
-                ->orderBy('id','desc')
-                ->with('image','video','category','subCategory','user')
-                ->paginate('15');
-                // return $search_query;
+        $query = Post::query();
 
-        return view('post::post_search',compact('posts','categories','activeLang','search_query','subCategories'));
+        if(!empty($request->language))
+            $query->where('language',$request->language);
+
+        if(!empty($request->post_type))
+            $query->where('post_type',$request->post_type);
+
+        if(!empty($request->category_id))
+            $query->where('category_id',$request->category_id);
+
+        if(!empty($request->sub_category_id))
+            $query->where('sub_category_id',$request->sub_category_id);
+
+        if(!empty($request->search_key))
+            $query->where('title', 'like', '%' . $request->search_key .'%');
+
+
+        $posts = $query->orderBy('id','desc')->paginate(15);
+
+        // return $search_query;
+
+        return view('post::post_search',compact('posts','categories','activeLang',
+                                     'search_query','subCategories','request'));
 
     }
 

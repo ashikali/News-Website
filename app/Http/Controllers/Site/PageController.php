@@ -17,7 +17,9 @@ class PageController extends Controller
 {
     public function page( $id )
     {
+
         try{
+
             $page               = Page::where('slug', $id)->first();
             $socialMedias       = SocialMedia::where('status', 1)->get();
 
@@ -36,7 +38,6 @@ class PageController extends Controller
             else:
                 return view('site.pages.contact_us', compact('page', 'socialMedias'));
             endif;
-
 
         }
         catch (\Exception $e){
