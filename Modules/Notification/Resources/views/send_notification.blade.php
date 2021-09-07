@@ -103,8 +103,10 @@
 @endsection
 
 @section('script')
+
     <script type="text/javascript">
         var CSRF_TOKEN = "{{ csrf_token() }}";
+
         $('#post_id').select2({
             placeholder: "{{ __('select_option') }}",
             minimumInputLength: 2,

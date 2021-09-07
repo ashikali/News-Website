@@ -65,7 +65,6 @@ class GlobalController extends Controller
             else :
                 $role               = Role::find($id);
                 $roleForAttach      = Role::find(3);
-
                 $users              = Role::find($id)->withUsers()->get();
 
                 if ($users->count() > 0) :
@@ -295,8 +294,8 @@ class GlobalController extends Controller
         echo json_encode($data);
     }
 
-    public function editInfo($page_name, $param1 = null)
-    {
+    public function editInfo($page_name, $param1 = null){
+
         $otherLinks         = null;
 
         if ($param1) :

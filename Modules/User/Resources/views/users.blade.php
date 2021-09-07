@@ -1,22 +1,24 @@
 <!-- msater layout -->
 @extends('common::layouts.master')
+
 <!-- active menu -->
 @section('users_management')
     active
 @endsection
-<!--  -->
+
 @section('users_management_')
     aria-expanded="true"
 @endsection
+
 @section('u-show')
     show
 @endsection
+
 @section('user-list')
     active
 @endsection
-@section('modal')
-    @include('gallery::image-gallery')
-@endsection
+
+<!--Modal Area -->
 
 @section('content')
 

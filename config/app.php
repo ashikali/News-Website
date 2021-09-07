@@ -174,6 +174,7 @@ return [
         'Barryvdh\TranslationManager\ManagerServiceProvider',
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class, 
 
 
         /*
@@ -246,6 +247,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
+	'Datatables' => Yajra\Datatables\Facades\Datatables::class, 
 
     ],
 

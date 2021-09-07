@@ -12,9 +12,6 @@
 @section('user-create')
     active
 @endsection
-@section('modal')
-    @include('gallery::image-gallery')
-@endsection
 
 @section('content')
     <div class="dashboard-ecommerce">

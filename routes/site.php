@@ -20,12 +20,12 @@ Route::group(
 			Route::post('/register', 'UserController@register')->name('site.register');
 			Route::get('/logout', 'UserController@logout')->name('site.logout');
 			Route::get('activation/{email}/{activationCode}','UserController@activation');
-	        Route::get('sitemap','SitemapController@sitemap')->name('sitemap');
+		        Route::get('sitemap','SitemapController@sitemap')->name('sitemap');
 			Route::get('/forgot-password','UserController@forgotPassword')->name('forget-password');
 			Route::post('/forgot-password','UserController@postForgotPassword')->name('do-forget-password');
 			Route::get('reset/{email}/{activationCode}','UserController@resetPassword');
-	        Route::post('reset/{email}/{activationCode}','UserController@PostResetPassword')->name('reset-password');
-	        //end auth route
+		        Route::post('reset/{email}/{activationCode}','UserController@PostResetPassword')->name('reset-password');
+		        //end auth route
 
 			Route::get('search', 'ArticleController@search')->name('article.search');
 			Route::get('get-read-more-post-search', 'ArticleController@getReadMorePostSearch');

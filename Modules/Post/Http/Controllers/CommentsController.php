@@ -9,11 +9,12 @@ use Modules\Post\Entities\Comment;
 use Modules\Setting\Entities\Setting;
 use function GuzzleHttp\Promise\all;
 
-class CommentsController extends Controller
-{
-    public function index()
-    {
+class CommentsController extends Controller {
+
+    public function index(){
+
         return view('post::comment_settings');
+
     }
 
     public function Comments()

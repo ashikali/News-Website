@@ -24,9 +24,66 @@
                     </li>
                     @endif
 
+		    @if(Sentinel::getUser()->hasAccess(['companies_read']) || Sentinel::getUser()->hasAccess(['companies_write']) || Sentinel::getUser()->hasAccess(['companies_delete']))
+
+                        <li class="nav-item">
+			    <a class="nav-link @yield('companies_active')" href="#" data-toggle="collapse" 
+							data-target="#submenu-120" aria-controls="submenu-120">
+                                <i class="fas fa-fw fa-university"></i>{{__('companies')}}
+                            </a>
+                            <div id="submenu-120" class="collapse submenu @yield('companies-show')">
+                                <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link @yield('companies')" href="{{ route('mng.companies.list') }}">
+                                                {{__('all_companies')}}
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link @yield('addresses')" href="{{ route('mng.addresses.list') }}">
+                                                {{__('addresses')}}
+                                            </a>
+                                        </li>
+
+                       		 <li class="nav-item">
+		       			<a class="nav-link @yield('companies_active')" href="#" data-toggle="collapse" 
+		       			   			data-target="#submenu-190" aria-controls="submenu-120">
+                       			    <i class="fas fa-fw fa-university"></i>{{__('products')}}
+                       			</a>
+                            	    <div id="submenu-190" class="collapse submenu @yield('companies-show')">
+
+                                	<ul class="nav flex-column">
+
+                                        <li class="nav-item">
+                                            <a class="nav-link @yield('Products')" href="{{ route('mng.products.list') }}">
+                                                {{__('products')}}
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link @yield('categories')" href="{{ route('mng.product.categories.list') }}">
+                                                {{__('categories')}}
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link @yield('tags')" href="{{ route('mng.product_tags.list') }}">
+                                                {{__('product_tags')}}
+                                            </a>
+                                        </li>
+				       </ul>
+
+				    </div>
+				  </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+
+                   @endif
+			
+
                     @if(Sentinel::getUser()->hasAccess(['post_read']) || Sentinel::getUser()->hasAccess(['post_write']) || Sentinel::getUser()->hasAccess(['post_delete']))
                         <li class="nav-item ">
-                            <a class="nav-link @yield('post')" href="#" data-toggle="collapse" @yield('post-aria-expanded', 'aria-expanded=false') data-target="#submenu-2" aria-controls="submenu-2">
+                            <a class="nav-link @yield('post')" href="#" data-toggle="collapse" data-target="#submenu-2" aria-controls="submenu-2">
                                 <i class="fas fa-fw fa-th-list"></i>{{__('posts')}}
                             </a>
                             <div id="submenu-2" class="collapse submenu @yield('post-show')">
@@ -100,6 +157,7 @@
                     @endif
 
                     @if(Sentinel::getUser()->hasAccess(['comments_read']) || Sentinel::getUser()->hasAccess(['comments_write']) || Sentinel::getUser()->hasAccess(['comments_delete']))
+             
                         <li class="nav-item">
                             <a class="nav-link @yield('comments_active')" href="#" data-toggle="collapse" @yield('comments-aria-expanded', 'aria-expanded=false') data-target="#submenu-115" aria-controls="submenu-115">
                                 <i class="fas fa-fw fa-comments"></i>{{__('comments')}}

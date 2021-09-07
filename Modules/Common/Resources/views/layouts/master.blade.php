@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{static_asset('css')}}/custom.css">
     <link rel="stylesheet" href="{{static_asset('css')}}/custom2.css">
     <link rel="stylesheet" href="{{static_asset('vendor')}}/datepicker/tempusdominus-bootstrap-4.css" />
+	   
     {{-- select teg --}}
     <link rel="stylesheet" href="{{static_asset('css')}}/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="{{static_asset('css/tagsinput.css')}}">
@@ -38,6 +39,13 @@
 
     <!-- select2 -->
     <link href="{{static_asset('Select2/css/select2.css') }}" rel="stylesheet" />
+
+<!-- Added by ashik
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css" rel="stylesheet" />
+-->
 
     <script src="{{static_asset('js/prebid-ads.js') }}"></script>
 
@@ -332,6 +340,20 @@
 
     <script src="{{static_asset('js/collapse.js') }}"> </script>
     <script src="{{static_asset('Select2/js/select2.js') }}"></script>
+
+<!--
+Added by Ashik 
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
+    <script src="{{static_asset('js/exports.js')}}"></script>
+-->
 
     @yield('script')
 

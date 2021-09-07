@@ -8,6 +8,7 @@
                     </ul>
                 </div>
                 <div class="right-content d-flex">
+<!--
                         <div class="d-flex">
                             @if(settingHelper('submit_news_status')==1)
                                 <div class="submit-news d-none d-md-block">
@@ -23,6 +24,9 @@
                                 </select>
                             </div>
                         </div>
+--> 
+<!-- Commented by Ashik --> 
+
                     <div class="d-flex ">
                         <div class="sg-social d-none d-xl-block mr-md-5">
                             <ul class="global-list">
@@ -45,9 +49,11 @@
 
                                 <div class="dropdown-menu dropdown-menu-right nav-user-dropdown site-setting-area" aria-labelledby="navbarDropdownMenuLink2">
 
-                                    @if(Sentinel::getUser()->roles[0]->id != 4 && Sentinel::getUser()->roles[0]->id != 5)
+
+				 {{-- @if(Sentinel::getUser()->roles[0]->id != 4 && Sentinel::getUser()->roles[0]->id != 5) --}}
+
                                     <a class="" href="{{ route('dashboard') }} " target="_blank"><i class="fa fa-tachometer mr-2" aria-hidden="true"></i>{{__('dashboard')}}</a>
-                                    @endif
+				{{--    @endif  ashik --}}
                                     <a class=""  href="{{ route('site.profile') }}"><i class="fa fa-user mr-2"></i>{{__('profile')}}</a>
 
                                     <a class=""  href="{{ route('site.profile.form') }}"><i class="fa fa-cog mr-2"></i>{{__('edit_profile')}}</a>

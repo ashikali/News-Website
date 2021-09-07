@@ -1,6 +1,6 @@
 {
-    "app_name": "NeonX",
-    "app_full_name": "ONNO Laravel News and magazine script",
+    "app_name": "SecurityNews",
+    "app_full_name": "Security News and Magazine script",
     "login": "Login",
     "registration": "Registration",
     "back_to": "Back to",
@@ -18,7 +18,7 @@
     "account": "Account",
     "setting": "Setting",
     "logout": "Logout",
-    "dashboard": "Dashboard",
+    "dashboard": "Manage",
     "menu": "Menu",
     "home": "Home",
     "users": "Users",
@@ -763,5 +763,29 @@
     "is_featured": "Is featured",
     "top_stories": "Top Stories",
     "latest_posts": "Latest Posts",
-    "mobile_app": "Mobile App"
+    "mobile_app": "Mobile App",
+    "companies" : "Companies",
+    "all_companies": "All Companies",
+    "company_name": "Company Name",     
+    "company_status" : "Company Status",
+    "created_at" : "Created At",
+    "create_company" : "Create Company",
+    "company_name" : "Company Name",
+    "edit_company" : "Edit Company",
+    "addresses" : "Addresses",
+    "add_address" : "Add Address",
+    "full_address" : "Full Address",
+    "create_product_categories" : "Create Product Categories",
+    "please_select" : "Please Select",
+    "product_categories" : "Product Categories",
+    "parent_categories"  : "Parent Categories",
+    "are_you_sure" : "Are You Sure?",
+    "copy" : "copy",
+    "additional_info" : "Additional Info",
+    "Delete Selected" : "Delete Selected"
+
+	
+
+
+
 }
