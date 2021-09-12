@@ -57,8 +57,7 @@
                     @foreach($sliderPosts as $post)
                         <div class="thumb">
                             @if(isFileExist(@$post->image, $result = @$post->image->small_image))
-                                <img src="{{ safari_check() ? basePath(@$post->image).'/'.$result : static_asset('default-image/default-123x83.png') }} "
-                                     data-original=" {{ basePath($post->image) }}/{{ $result }}"
+                                <img src=" {{ basePath($post->image) }}/{{ $result }}"
                                      alt="{!! $post->title !!}" class="img-fluid lazy">
                             @else
                                 <img src="{{static_asset('default-image/default-123x83.png') }} " class="img-fluid"
@@ -77,8 +76,7 @@
                                     <div class="entry-thumbnail">
                                         <a href="{{ route('article.detail', ['id' => $post->slug]) }}">
                                             @if(isFileExist(@$post->image, $result = @$post->image->medium_image))
-                                                <img src="{{ safari_check() ? basePath(@$post->image).'/'.$result : static_asset('default-image/default-358x215.png') }} "
-                                                     data-original="{{basePath($post->image)}}/{{ $result }}"
+                                                <img src="{{basePath($post->image)}}/{{ $result }}"
                                                      alt="{!! $post->title !!}" class="img-fluid lazy">
 
                                             @else
@@ -121,8 +119,7 @@
                             <div class="entry-thumbnail">
                                 <a href="{{ route('article.detail', ['id' => $post->slug]) }}">
                                     @if(isFileExist(@$post->image, $result = @$post->image->small_image))
-                                        <img src="{{ safari_check() ? basePath(@$post->image).'/'.$result : static_asset('default-image/default-240x160.png') }} "
-                                             data-original="{{basePath(@$post->image)}}/{{ $result }}"
+                                        <img src="{{basePath(@$post->image)}}/{{ $result }}"
                                              alt="{!! $post->title !!}" class="img-fluid lazy">
                                     @else
                                         <img src="{{static_asset('default-image/default-240x160.png') }} "

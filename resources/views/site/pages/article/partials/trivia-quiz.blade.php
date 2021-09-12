@@ -12,8 +12,7 @@
                     @if($quizQuestion->answer_format == 'text')
                         @if(isFileExist(@$quizQuestion->image, $result = @$quizQuestion->image->big_image_two))
                             <img class="img-fluid"
-                                 src="{{safari_check() ? basePath(@$quizQuestion->image).'/'.$result : static_asset('default-image/default-730x400.png') }} "
-                                 data-original="{{ basePath(@$quizQuestion->image) }}/{{ $result }}"
+                                 src="{{ basePath(@$quizQuestion->image) }}/{{ $result }}"
                                  alt="{!! $quizQuestion->question !!}">
                         @else
                             <img class="img-fluid" src="{{static_asset('default-image/default-730x400.png') }} "
@@ -32,8 +31,7 @@
                                         <div class="image-container">
                                             @if(isFileExist(@$quizAnswer->image, $result = @$quizAnswer->image->medium_image))
                                                 <img class="img-fluid"
-                                                     src="{{safari_check() ? basePath(@$quizAnswer->image).'/'.$result : static_asset('default-image/default-358x215.png') }} "
-                                                     data-original="{{ basePath(@$quizAnswer->image) }}/{{ $result }}"
+                                                     src="{{ basePath(@$quizAnswer->image) }}/{{ $result }}"
                                                      alt="{!! $quizAnswer->answer_text !!}">
                                             @else
                                                 <img class="img-fluid" src="{{static_asset('default-image/default-358x215.png') }} "

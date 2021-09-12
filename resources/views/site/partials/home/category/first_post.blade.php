@@ -2,8 +2,7 @@
     <div class="entry-thumbnail">
         <a href="{{ route('article.detail', ['id' => @$firstPost->slug]) }}">
             @if(isFileExist(@$firstPost->image, $result =@$firstPost->image->medium_image))
-                <img src="{{ safari_check() ? basePath(@$firstPost->image).'/'.$result : static_asset('default-image/default-358x215.png') }} "
-                     data-original=" {{basePath($firstPost->image)}}/{{ $result }} "
+                <img src=" {{basePath($firstPost->image)}}/{{ $result }} "
                      class="img-fluid" alt="{!! $firstPost->title !!}">
             @else
                 <img src="{{static_asset('default-image/default-358x215.png') }} " class="img-fluid"

@@ -8,7 +8,7 @@
         <div class="thumb">
             @if($content['text-image'][1]['image'] != "")
                 @if(isFileExist($content['text-image'][1]['image'] , $result =  $content['text-image'][1]['image']->medium_image))
-                    <img src="{{safari_check() ? basePath(@$content['text-image'][1]['image']).'/'.$result : static_asset('default-image/default-358x215.png') }} " data-original=" {{basePath($content['text-image'][1]['image'])}}/{{ $result }} " class="img-fluid"   alt="{!! $post->title !!}"  >
+                    <img src="{{basePath($content['text-image'][1]['image'])}}/{{ $result }}" class="img-fluid"   alt="{!! $post->title !!}"  >
                 @else
                     <img class="img-fluid" src="{{ static_asset('default-image/default-358x215.png') }}" alt="{!! $post->title !!}" >
                 @endif

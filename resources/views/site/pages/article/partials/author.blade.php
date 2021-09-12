@@ -2,7 +2,7 @@
     <div class="d-flex mb-3">
         <div class="thumb">
             @if(@$post->user->profile_image != null)
-                <img src="{{static_asset('default-image/user.jpg') }}" data-original="{{static_asset(@$post->user->profile_image)}}" class="img-fluid"   >
+                <img src="{{static_asset(@$post->user->profile_image)}}" class="img-fluid"   >
             @else
                 <img src="{{static_asset('site/images/others/author.png') }}" class="img-fluid">
             @endif

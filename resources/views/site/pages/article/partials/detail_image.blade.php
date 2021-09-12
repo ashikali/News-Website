@@ -51,8 +51,7 @@
                     @else
                         @if(isFileExist(@$post->image, $result = @$post->image->big_image_two))
                             <img class="img-fluid"
-                                 src="{{safari_check() ? basePath(@$post->image).'/'.$result : static_asset('default-image/default-730x400.png') }} "
-                                 data-original="{{ basePath(@$post->image) }}/{{ $result }}"
+                                 src="{{ basePath(@$post->image) }}/{{ $result }}"
                                  alt="{!! $post->title !!}">
                         @else
                             <img class="img-fluid" src="{{static_asset('default-image/default-730x400.png') }} "

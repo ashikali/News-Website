@@ -26,7 +26,7 @@
                                 <div class="dropdown">
                                     <a class="nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         @if(Sentinel::getUser()->profile_image != null)
-                                            <img src="{{static_asset('default-image/user.jpg') }}" data-original="{{static_asset(Sentinel::getUser()->profile_image)}}"  class="profile">
+                                            <img src="{{static_asset(Sentinel::getUser()->profile_image)}}"  class="profile">
                                         @else
                                             <i class="fa fa-user-circle mr-2"></i>
                                         @endif
@@ -143,7 +143,7 @@
                                                                                         <div class="entry-thumbnail">
                                                                                             <a href="{{ route('article.detail', ['id' => $item->slug]) }}">
                                                                                                 @if(isFileExist(@$item->image, $result = @$item->image->medium_image_three))
-                                                                                                    <img class="img-fluid" src="{{ safari_check() ? basePath(@$item->image).'/'.$result : static_asset('default-image/default-240x160.png') }}" data-original="{{basePath(@$item->image)}}/{{ $result }}" alt="{!! $item->title !!}">
+                                                                                                    <img class="img-fluid" src="{{basePath(@$item->image)}}/{{ $result }}" alt="{!! $item->title !!}">
                                                                                                 @else
                                                                                                     <img class="img-fluid" src="{{static_asset('default-image/default-240x160.png') }}"  alt="{!! $item->title !!}">
                                                                                                 @endif

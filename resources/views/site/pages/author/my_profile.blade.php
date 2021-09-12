@@ -9,8 +9,7 @@
                 <div class="author-top-content d-md-flex">
                     <div class="author">
                         @if(Sentinel::getUser()->profile_image != null)
-                            <img src="{{static_asset('default-image/user.jpg') }}"
-                                 data-original=" {{static_asset(Sentinel::getUser()->profile_image)}}" id="profile-img"
+                            <img src=" {{static_asset(Sentinel::getUser()->profile_image)}}" id="profile-img"
                                  class="img-fluid">
                         @else
                             <img src="{{static_asset('default-image/user.jpg') }}" id="profile-img" class="img-fluid">
@@ -95,8 +94,7 @@
                                                 <a href="{{ route('article.detail', ['id' => @$post->slug]) }}">
                                                     @if(isFileExist($post->image, $result = @$post->image->medium_image))
                                                         <img
-                                                            src="{{safari_check() ? basePath(@$post->image).'/'.$result : static_asset('default-image/default-358x215.png') }} "
-                                                            data-original=" {{basePath($post->image)}}/{{ $result }} "
+                                                            src=" {{basePath($post->image)}}/{{ $result }} "
                                                             class="img-fluid" alt="{!! $post->title !!}">
                                                     @else
                                                         <img

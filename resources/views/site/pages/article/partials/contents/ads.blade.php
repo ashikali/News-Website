@@ -3,7 +3,7 @@
         @if($content['ads'][0]['ads_type'] == 'image')
             <div class="thumb">
                 @if(isFileExist($content['ads'][0]['detail'] , $result =  $content['ads'][0]['detail']->original_image))
-                    <img src="{{safari_check() ? basePath(@$content['ads'][0]['detail']).'/'.$result : static_asset('default-image/default-ads.png') }} " data-original=" {{basePath($content['ads'][0]['detail'])}}/{{ $result }} " class="img-fluid"   alt="{!! $post->title !!}"  >
+                    <img src="{{basePath($content['ads'][0]['detail'])}}/{{ $result }}" class="img-fluid"   alt="{!! $post->title !!}"  >
                 @else
                     <img class="img-fluid" src="{{ static_asset('default-image/default-ads.png') }}" alt="{!! $post->title !!}" >
                 @endif

@@ -14,8 +14,7 @@
                                         <div class="entry-thumbnail">
                                             <a href="{{ route('article.detail', ['id' => $post->slug]) }}">
                                                 @if(isFileExist(@$post->image, $result = @$post->image->big_image_two))
-                                                    <img src="{{ safari_check() ? basePath(@$post->image).'/'.$result : static_asset('default-image/default-730x400.png') }}"
-                                                         data-original=" {{basePath($post->image)}}/{{ $result }} "
+                                                    <img src=" {{basePath($post->image)}}/{{ $result }} "
                                                          class="img-fluid image-thumb" alt="{!! $post->title !!}">
                                                 @else
                                                     <img src="{{static_asset('default-image/default-730x400.png') }}"
@@ -117,8 +116,7 @@
                                 <a href="{{ route('article.detail', ['id' => $post->slug]) }}">
                                     @if(isFileExist(@$post->image, @$post->image->medium_image))
                                         <img class="img-fluid"
-                                             src="{{ safari_check() ? basePath(@$post->image).'/'.$result : static_asset('default-image/default-358x215.png') }} "
-                                             data-original="{{basePath(@$post->image)}}/{{ $post->image->medium_image }}"
+                                             src="{{basePath(@$post->image)}}/{{ $post->image->medium_image }}"
                                              alt="{!! $post->title !!}">
                                     @else
                                         <img src="{{static_asset('default-image/default-358x215.png') }} "

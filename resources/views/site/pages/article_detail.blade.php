@@ -138,7 +138,7 @@
                                                                 <div class="entry-thumbnail">
                                                                     <a href="{{ route('article.detail', [$item->slug]) }}">
                                                                         @if(isFileExist(@$item->image, $result =  @$item->image->medium_image))
-                                                                            <img src="{{safari_check() ? basePath(@$item->image).'/'.$result : static_asset('default-image/default-358x215.png') }} " data-original="{{ basePath(@$item->image) }}/{{ $result }}" class="img-fluid" {!! $item->title !!}>
+                                                                            <img src="{{ basePath(@$item->image) }}/{{ $result }}" class="img-fluid" {!! $item->title !!}>
                                                                         @else
                                                                             <img class="img-fluid" src="{{static_asset('default-image/default-358x215.png') }} "  {!! $item->title !!}>
                                                                         @endif

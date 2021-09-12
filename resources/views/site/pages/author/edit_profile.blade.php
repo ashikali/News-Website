@@ -11,7 +11,7 @@
                     <div class="author-form-content">
                         <div class="author">
                                 @if(Sentinel::getUser()->profile_image != null)
-                                    <img src="{{static_asset('default-image/user.jpg') }}" data-original=" {{static_asset(Sentinel::getUser()->profile_image)}}" id="profile-img" class="img-thumbnail" height="200"  >
+                                    <img src=" {{static_asset(Sentinel::getUser()->profile_image)}}" id="profile-img" class="img-thumbnail" height="200"  >
                                 @else
                                     <img src="{{static_asset('default-image/user.jpg') }}" height="200" id="profile-img" class="img-thumbnail">
                                 @endif
