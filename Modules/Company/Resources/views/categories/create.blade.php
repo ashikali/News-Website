@@ -4,13 +4,22 @@
     show
 @endsection
 
-@section('addresses')
+@section('products-show')
+    show
+@endsection
+
+@section('products')
     active
 @endsection
 
 @section('companies_active')
     active
 @endsection
+
+@section('product_categories')
+    active
+@endsection
+
 
 
 @section('content')
@@ -47,7 +56,7 @@
 
                         <div class="block-header">
                             <div class="form-group">
-                                <h4 class="border-bottom">{{ __('create_product_categories') }}</h4>
+                                <h4 class="border-bottom">{{ __('Create Product Category') }}</h4>
                             </div>
                         </div>
                         <div class="col-sm-12">

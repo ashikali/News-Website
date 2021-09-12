@@ -2,13 +2,13 @@
 
 namespace Modules\Company\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Company\Entities\ProductCategory;
 use Modules\Company\Http\Requests\StoreProductCategoryRequest;
 use Modules\Company\Http\Requests\MassDestroyProductCategoryRequest;
+use Modules\Company\Http\Requests\UpdateProductCategoryRequest;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Validator;
 use Debugbar;
@@ -39,22 +39,31 @@ class ProductCategoryController extends Controller {
     public function store(StoreProductCategoryRequest $request){
 
        $inputs = array_filter($request->all(), 'strlen'); //convert empty to null
-       $productCategory = ProductCategory::create($inputs);
-       return redirect()->route('mng.product.categories.list');
+
+       if(ProductCategory::create($inputs))
+	      $withMsg = [ 'success',__('Created Successfully') ];
+       else 
+       	      $withMsg = [ 'error',__('Creation Failed') ];
+
+
+       return redirect()->route('mng.product.categories.list')->with($withMsg[0],$withMsg[1]);
 
     }
 
-    public function edit($id){
+    public function edit(ProductCategory $productCategory){
 
-        return view('company::categories.edit');
-
+        return view('company::categories.edit', compact('productCategory'));
     }
 
-    public function update(Request $request, $id){
 
-    }
+    public function update(UpdateProductCategoryRequest $request,ProductCategory $productCategory){
 
-    public function destroy($id){
+	  if($productCategory->update($request->all()))
+	      $withMsg = [ 'success',__('Updated Successfully') ];
+	  else 
+       	      $withMsg = [ 'error',__('Updation Failed') ];
+
+	  return redirect()->route('mng.product.categories.list')->with($withMsg[0],$withMsg[1]);
 
     }
 
@@ -64,13 +73,6 @@ class ProductCategoryController extends Controller {
         return response()->json(['slug' => $slug]);
 
     }
-    public function massDestroy(MassDestroyProductCategoryRequest $request){
 
-        ProductCategory::whereIn('id', request('ids'))->delete();
-        return response(null, Response::HTTP_NO_CONTENT);
-
-    }
-
-  
 
 }

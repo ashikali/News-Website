@@ -18,6 +18,8 @@ class HomeController extends Controller
 {
     public function home()
     {
+
+	    
         $primarySection             = Cache::rememberForever('primarySection', function (){
                                         return ThemeSection::where('is_primary', 1)->first();
                                     });

@@ -16,20 +16,11 @@
         {{ $productCategory->slug ?? '' }}
     </td>
     <td>
-	<div class="dropdown">
-             <button class="btn bg-primary dropdown-toggle btn-select-option"
-                     type="button" data-toggle="dropdown">... <span
-                     class="caret"></span>
-             </button>
-             <ul class="dropdown-menu options-dropdown">
-
-                <li>
-                <a href="{{route('mng.product.categories.edit',[$productCategory->id])}}">
-                         <i class="fa fa-edit option-icon"></i>{{ __('edit') }}
-                </a>
-                </li>
-             </ul>
-         </div>
+	<a class="btn btn-light active btn-xs"
+           href="{{ route('mng.product.categories.edit',[ 'productCategory'=> $productCategory->id] ) }}"><i
+           class="fa fa-edit"></i>
+                {{ __('edit') }}
+        </a> 
     </td>
 
 </tr>

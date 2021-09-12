@@ -41,17 +41,19 @@ Route::group(
 
 	     Route::group( [ 'prefix' => 'product_tags','as' => 'mng.product_tags.' ],function() {
     	     	Route::get('/', 'ProductTagsController@index')->name('list');
+    	     	Route::get('/create', 'ProductTagsController@create')->name('create');
+    	     	Route::post('/store', 'ProductTagsController@store')->name('store');
+		Route::get('/edit/{productTag}','ProductTagsController@edit')->name('edit');
+		Route::put('/update/{productTag}','ProductTagsController@update')->name('update');
 	     });
 
 	     Route::group( [ 'prefix' => 'categories','as' => 'mng.product.categories.' ],function() {
     	     	Route::get('/', 'ProductCategoryController@index')->name('list');
     	     	Route::get('/create', 'ProductCategoryController@create')->name('create');
     	     	Route::post('/store', 'ProductCategoryController@store')->name('store');
-		Route::get('/edit','ProductCategoryController@edit')->name('edit');
-		Route::delete('/delete/{id}','ProductCategoryController@destroy')->name('destroy');
+		Route::get('/edit/{productCategory}','ProductCategoryController@edit')->name('edit');
+		Route::put('/update/{productCategory}','ProductCategoryController@update')->name('update');
              	Route::get('/check-slug', 'ProductCategoryController@checkSlug')->name('checkSlug');
-	        Route::delete('product-categories/destroy', 'ProductCategoryController@massDestroy')->name('massDestroy');
- 
 	     });
 
 

@@ -11,20 +11,30 @@ class UpdateProductCategoryRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
-        return [
-            //
+    public function rules(){
+
+
+	 return [
+            'name' => [
+                'required'],
+            'category_id' => [ 'sometimes','integer' ],
+            'slug' => [
+                'required',
+                'unique:product_categories,slug,'.$this->productCategory->id ]
         ];
+
     }
+
 
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
-    {
+    public function authorize(){
+
         return true;
+
     }
+
 }

@@ -16,7 +16,7 @@
     active
 @endsection
 
-@section('product_categories')
+@section('product_tags')
     active
 @endsection
 
@@ -26,7 +26,7 @@
     <div class="dashboard-ecommerce">
         <div class="container-fluid dashboard-content ">
             <!-- page info start-->
-  {!!  Form::open([ 'route' => [ 'mng.product.categories.update',$productCategory->id ] , 'method' => 'post' ]) !!}
+            {!!  Form::open([ 'route' => [ 'mng.product_tags.update', ["productTag" => $productTag->id ]  ], 'method' => 'post' ]) !!}
 
 	    @method('PUT')
             <div class="row clearfix">
@@ -57,37 +57,22 @@
 
                         <div class="block-header">
                             <div class="form-group">
-                                <h4 class="border-bottom">{{ __('update_product_category') }}</h4>
+                                <h4 class="border-bottom">{{ __('Create Product Tag') }}</h4>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group">
 				<label class="required" for="name">{{ __('name') }}</label>
 				<input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" 
-					id="name" value="{{$productCategory->name}}">
+					id="name" value="{{$productTag->name}}" required>
                             </div>
                         </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
-				<label for="description">{{ __('description') }}</label>
-				<textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" 
-					  name="description" id="description">{{ $productCategory->description }}</textarea>
-	
-                            </div>
-                        </div>
-			<div class="col-sm-12">
-                              <div class="form-group">
-					<label class="required" for="slug">{{ __('slug') }}</label>
-					<input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" 
-					       type="text" name="slug" id="slug" value="{{$productCategory->slug}}">
-			      </div>
-			</div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group form-float form-group-sm">
                                     <button type="submit" class="btn btn-primary float-right m-t-20"><i
                                             class="fa fa-paper-plane"
-                                            aria-hidden="true"></i> {{ __('edit') }}</button>
+                                            aria-hidden="true"></i> {{ __('update') }}</button>
                                 </div>
                             </div>
                         </div>

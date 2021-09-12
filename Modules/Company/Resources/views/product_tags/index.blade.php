@@ -17,7 +17,7 @@
     active
 @endsection
 
-@section('product_categories')
+@section('product_tags')
     active
 @endsection
 
@@ -60,14 +60,14 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="block-header">
-                                                <h2>{{ __('product_categories') }}</h2>
+                                                <h2>{{ __('Product Tags') }}</h2>
                                             </div>
                                         </div>
                                     </div>
 				   <div class="row">
 					<div class="col-12 text-right">
-						 <a href="{{route('mng.product.categories.create')}}" class="btn btn-primary btn-sm"><i
-                                                   class="m-r-10 mdi mdi-plus"></i>{{__('Create Product Category')}}</a>
+						 <a href="{{route('mng.product_tags.create')}}" class="btn btn-primary btn-sm"><i
+                                                   class="m-r-10 mdi mdi-plus"></i>{{__('Create Product Tag')}}</a>
                                         </div>
                                    </div>
                                 </div>
@@ -77,30 +77,44 @@
                                         <tr role="row">
                                             <th>#</th>
                                             <th>{{ __('name') }}</th>
-                                            <th>{{ __('description') }}</th>
-                                            <th>{{ __('parent_categories') }}</th>
-                                            <th>{{ __('slug') }}</th>
-                                            <th>{{ __('options') }}</th>
+					    <th>{{__('created_at')}}</th>
+					    <th>{{__('Updated At')}}</th>
+					    <th>{{__('Options')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-		  	  @foreach($productCategories as $key => $productCategory)
 
-               			    @include('company::categories.indexRow', compact('productCategory'))
-
-               			 @foreach($productCategory->childCategories as $childCategory)
-
-               			  @include('company::categories.indexRow', ['productCategory' => $childCategory, 'prefix' => '--'])
-
-               			      @foreach($childCategory->childCategories as $childCategory)
-               			       @include('company::categories.indexRow', ['productCategory' => $childCategory, 'prefix' => '----'])
-               			      @endforeach
-
-               			 @endforeach
-
-            	          @endforeach	
+					@foreach($product_tags as $in => $product_tag)
+					 <tr role="row" id="row_{{ $product_tag->id }}" class="odd">
+					     <td>{{$product_tags->firstItem()+$in}}</td>
+					     <td>{{$product_tag->name}}</td>
+                          		     <td>{{ Carbon\Carbon::parse($product_tag->created_at)->diffforHumans() }}</td>
+                          		     <td>{{ Carbon\Carbon::parse($product_tag->updated_at)->diffforHumans() }}</td>
+					     <td>
+				       <a class="btn btn-light active btn-xs"
+				          href="{{ route('mng.product_tags.edit',[ 'productTag'=> $product_tag->id ] ) }}"><i
+					           class="fa fa-edit"></i>
+					                {{ __('edit') }}
+					        </a>
+					    </td>
+ 
+					 </tr>
+					@endforeach
+	
                                         </tbody>
                                     </table>
+                                </div>
+			        <div class="row">
+                                    <div class="col-12 col-sm-6">
+                                        <div class="block-header">
+                                            <h2>{{ __('Showing') }} {{ $product_tags->firstItem()}} {{  __('to') }} {{ $product_tags->lastItem()}} {{ __('of') }} {{ $product_tags->total()}} {{ __('entries') }}</h2>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 text-right">
+                                        <div class="table-info-pagination float-right">
+                                            {!! $product_tags->render() !!}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

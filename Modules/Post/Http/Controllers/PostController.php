@@ -26,6 +26,7 @@ use Modules\Gallery\Entities\Audio;
 use LaravelLocalization;
 use Input;
 use Modules\Ads\Entities\Ad;
+use Artisan;
 
 class PostController extends Controller
 {
@@ -163,7 +164,7 @@ class PostController extends Controller
         if($type == 'audio'):
             $post->audio()->attach($request->audio);
         endif;
-
+/*
         Cache::forget('primarySectionPosts');
         Cache::forget('primarySectionPostsAuth');
         Cache::forget('sliderPostsAuth');
@@ -181,7 +182,9 @@ class PostController extends Controller
         Cache::forget('breakingNewssAuth');
         Cache::forget('lastPost');
         Cache::forget('menuDetails');
-        Cache::forget('primary_menu');
+	Cache::forget('primary_menu'); */
+
+	Artisan::call('cache:clear'); 
 
         return redirect()->back()->with('success',__('successfully_added'));
     }
@@ -436,6 +439,7 @@ class PostController extends Controller
 
         $post->save();
 
+/*
         Cache::forget('primarySectionPosts');
         Cache::forget('primarySectionPostsAuth');
         Cache::forget('sliderPostsAuth');
@@ -453,7 +457,9 @@ class PostController extends Controller
         Cache::forget('breakingNewssAuth');
         Cache::forget('lastPost');
         Cache::forget('menuDetails');
-        Cache::forget('primary_menu');
+	Cache::forget('primary_menu'); */
+
+	Artisan::call('cache:clear'); 
 
         return redirect()->back()->with('success',__('successfully_updated'));
     }
@@ -463,6 +469,7 @@ class PostController extends Controller
         $post           = Post::find($request->post_id);
         $post->$feature = 0;
 
+/*
         Cache::forget('primarySectionPosts');
         Cache::forget('primarySectionPostsAuth');
         Cache::forget('sliderPostsAuth');
@@ -477,7 +484,9 @@ class PostController extends Controller
         Cache::forget('latest_posts');
 
         Cache::forget('breakingNewss');
-        Cache::forget('breakingNewssAuth');
+	Cache::forget('breakingNewssAuth'); */
+
+	Artisan::call('cache:clear'); 
 
         $post->save();
 
@@ -497,6 +506,7 @@ class PostController extends Controller
 
         $post->save();
 
+/*
         Cache::forget('primarySectionPosts');
         Cache::forget('primarySectionPostsAuth');
         Cache::forget('sliderPostsAuth');
@@ -511,7 +521,9 @@ class PostController extends Controller
         Cache::forget('latest_posts');
 
         Cache::forget('breakingNewss');
-        Cache::forget('breakingNewssAuth');
+	Cache::forget('breakingNewssAuth'); */
+
+	Artisan::call('cache:clear'); 
 
         $data['status']     = "success";
         $data['message']    =  __('successfully_updated');
@@ -556,6 +568,7 @@ class PostController extends Controller
         return redirect()->back()->with('success',__('successfully_updated'));
     }
     public function updateRecommendedOrder(Request $request){
+
         for($i=0;$i<count($request->post_id);$i++){
             $post                   = Post::find($request->post_id[$i]);
             $post->recommended_order= $request->order[$i];

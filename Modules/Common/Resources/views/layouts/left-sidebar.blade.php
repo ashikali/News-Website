@@ -45,11 +45,11 @@
                                         </li>
 
                        		 <li class="nav-item">
-		       			<a class="nav-link @yield('companies_active')" href="#" data-toggle="collapse" 
+		       			<a class="nav-link @yield('products')" href="#" data-toggle="collapse" 
 		       			   			data-target="#submenu-190" aria-controls="submenu-120">
                        			    <i class="fas fa-fw fa-university"></i>{{__('products')}}
                        			</a>
-                            	    <div id="submenu-190" class="collapse submenu @yield('companies-show')">
+                            	    <div id="submenu-190" class="collapse submenu @yield('products-show')">
 
                                 	<ul class="nav flex-column">
 
@@ -59,13 +59,13 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link @yield('categories')" href="{{ route('mng.product.categories.list') }}">
+                                            <a class="nav-link @yield('product_categories')" href="{{ route('mng.product.categories.list') }}">
                                                 {{__('categories')}}
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link @yield('tags')" href="{{ route('mng.product_tags.list') }}">
-                                                {{__('product_tags')}}
+                                            <a class="nav-link @yield('product_tags')" href="{{ route('mng.product_tags.list') }}">
+                                                {{__('Product Tags')}}
                                             </a>
                                         </li>
 				       </ul>

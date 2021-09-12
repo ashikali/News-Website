@@ -776,16 +776,23 @@
     "add_address" : "Add Address",
     "full_address" : "Full Address",
     "create_product_categories" : "Create Product Categories",
+    "Create Product Category" : "Create Product Category",
     "please_select" : "Please Select",
     "product_categories" : "Product Categories",
     "parent_categories"  : "Parent Categories",
     "are_you_sure" : "Are You Sure?",
     "copy" : "copy",
     "additional_info" : "Additional Info",
-    "Delete Selected" : "Delete Selected"
-
-	
-
+    "update_product_category" : "Update Product Category",
+    "Delete Selected" : "Delete Selected",
+    "Updated Successfully" : "Updated Successfully",
+    "Updation Failed" : "Updation Failed",
+    "Created Successfully" : "Created Successfully",
+    "Creation Failed" : "Creation Failed" ,
+    "Product Tags" : "Product Tags",
+    "Create Product Tag" : "Create Product Tag",
+    "Updated At" : "Updated At",
+    "Update Product Tag" : "Update Product Tag"
 
 
 }

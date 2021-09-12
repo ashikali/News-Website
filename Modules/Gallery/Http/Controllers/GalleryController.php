@@ -67,11 +67,15 @@ class GalleryController extends Controller
             $smallImageName         = date('YmdHis') . "_small_123x83_" . rand(1, 50) . '.' . 'webp';
 
             // image upload directory
-            if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') =='s3' || defined('LARAVEL_START_FROM_PUBLIC')) :
-                $directory              = 'images/';
+	    $date_dir = date('Y-m-d');
+           if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') =='s3' || defined('LAAVEL_START_FROM_PUBLIC')) :
+                 $directory              = "images/{$date_dir}/";
             else:
-                $directory              = 'public/images/';
+                 $directory              = "public/images/{$date_dir}/";
             endif;
+
+	    if (!file_exists($directory)) 
+		    mkdir($directory,0755,true);
 
             $originalImageUrl       = $directory . $originalImageName;
             $ogImageUrl             = $directory . $ogImageName;

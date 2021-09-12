@@ -130,7 +130,7 @@
                                 <label for="language">{{ __('ad') }}</label>
                                 <select class="form-control" name="ad" id="ad">
                                     @foreach ($ads as $value => $ad)
-                                        <option value="{{$ad->id}}">{{$ad->ad_name}}</option>
+                                        <option value="{{$ad->id}}" {{$widget->ad->id == $ad->id ? 'selected':''}}>{{$ad->ad_name}}</option>
                                     @endforeach
                                 </select>
                             </div>

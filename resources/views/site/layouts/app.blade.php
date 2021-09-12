@@ -207,7 +207,7 @@
 @endif
 
 <script type="text/javascript" src="{{ static_asset('site/js/webp-support.js') }}"></script>
-<script type="text/javascript" src="{{ static_asset('site/js/custom.js')}}"> </script>
+<script type="text/javascript" src="{{ static_asset('site/js/custom.js?v=1.1')}}"> </script>
 @yield('quiz')
 </body>
 </html>
