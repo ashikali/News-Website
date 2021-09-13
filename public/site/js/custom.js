@@ -274,13 +274,14 @@ jQuery(function ($) {
 
     });
 
+/*
     $("img").lazyload({
         effect: "fadeIn"
     });
     $(window).load(function () {
         $('img.lazy').lazyload();
         $(window).resize();
-    });
+    }); */
 
     !function () {
         var e = new Image;

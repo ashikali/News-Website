@@ -32,8 +32,8 @@
     @endif
     <link rel="preload" href="{{static_asset('site/css/custom.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link  rel="stylesheet" href="{{static_asset('site/css/custom.css') }}"></noscript>
-    <link rel="preload" href="{{static_asset('site/css/responsive.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link  rel="stylesheet" href="{{static_asset('site/css/responsive.min.css') }}"></noscript>
+  <link rel="preload" href="{{static_asset('site/css/responsive.min.css')}}?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link  rel="stylesheet" href="{{static_asset('site/css/responsive.min.css')}}?v=1"></noscript>
 
     @yield('style')
 
@@ -126,7 +126,9 @@
 <script type="text/javascript" src="{{static_asset('js/custom.js') }}"></script>
 
 <script async type="text/javascript" src="{{static_asset('site/js') }}/jquery.cookie.min.js"></script>
-<script type="text/javascript" defer src="{{static_asset('site/js/lazyload.min.js')}}"></script>
+<!--
+<script type="text/javascript" defer src="{{static_asset('site/js/lazyload.min.js')}}"></script> 
+-->
 @php
     if(settingHelper('notification_status') == '1'){
         $onesignal_appid                    =   settingHelper('onesignal_app_id');
@@ -207,7 +209,7 @@
 @endif
 
 <script type="text/javascript" src="{{ static_asset('site/js/webp-support.js') }}"></script>
-<script type="text/javascript" src="{{ static_asset('site/js/custom.js?v=1.1')}}"> </script>
+<script type="text/javascript" src="{{ static_asset('site/js/custom.js?v=1.2')}}"> </script>
 @yield('quiz')
 </body>
 </html>
