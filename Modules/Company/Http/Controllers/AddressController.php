@@ -11,7 +11,6 @@ use PragmaRX\Countries\Package\Countries;
 use Modules\Language\Entities\Language;
 use Carbon\Carbon;
 use Validator;
-use Image;
 use Debugbar;
 use Sentinel;
 

@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="{{static_asset('vendor')}}/fonts/flag-icon-css/flag-icon.min.css">
     <link rel="stylesheet" href="{{static_asset('css')}}/style.css">
     <link rel="stylesheet" href="{{static_asset('css')}}/custom.css">
-    <link rel="stylesheet" href="{{static_asset('css')}}/custom2.css">
     <link rel="stylesheet" href="{{static_asset('vendor')}}/datepicker/tempusdominus-bootstrap-4.css" />
 	   
     {{-- select teg --}}
@@ -39,14 +38,13 @@
 
     <!-- select2 -->
     <link href="{{static_asset('Select2/css/select2.css') }}" rel="stylesheet" />
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
 <!-- Added by ashik
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css" rel="stylesheet" />
 -->
-
     <script src="{{static_asset('js/prebid-ads.js') }}"></script>
 
     @yield('style')
@@ -126,7 +124,6 @@
     <script src="{{static_asset('vendor')}}/slimscroll/jquery.slimscroll.js?version=1.0"></script>
 
     <!-- main js -->
-    <script src="{{static_asset('js')}}/main-js.js"></script>
     <script src="{{static_asset('js')}}/drag-n-drop-js.js"></script>
     <!-- notify -->
     <script src="{{static_asset('js/notify.min.js')}}"></script>
@@ -134,6 +131,7 @@
     <script src="{{static_asset('vendor')}}/datepicker/moment.js"></script>
     <script src="{{static_asset('vendor')}}/datepicker/tempusdominus-bootstrap-4.js"></script>
     <script src="{{static_asset('vendor')}}/datepicker/datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     <script type="text/javascript" src="{{static_asset('js/custom.js')}}"></script>
 
 
@@ -340,6 +338,7 @@
 
     <script src="{{static_asset('js/collapse.js') }}"> </script>
     <script src="{{static_asset('Select2/js/select2.js') }}"></script>
+    <script src="{{static_asset('js')}}/main-js.js?v=2"></script>
 
 <!--
 Added by Ashik 

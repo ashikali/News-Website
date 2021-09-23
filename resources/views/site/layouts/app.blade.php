@@ -30,8 +30,8 @@
         <link rel="preload" href="{{static_asset('site/css/rtl.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link  rel="stylesheet" href="{{static_asset('site/css/rtl.min.css') }}"></noscript>
     @endif
-    <link rel="preload" href="{{static_asset('site/css/custom.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link  rel="stylesheet" href="{{static_asset('site/css/custom.css') }}"></noscript>
+    <link rel="preload" href="{{static_asset('site/css/custom.css') }}?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link  rel="stylesheet" href="{{static_asset('site/css/custom.css')}}?v=1"></noscript>
   <link rel="preload" href="{{static_asset('site/css/responsive.min.css')}}?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link  rel="stylesheet" href="{{static_asset('site/css/responsive.min.css')}}?v=1"></noscript>
 

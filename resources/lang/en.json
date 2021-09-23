@@ -792,7 +792,14 @@
     "Product Tags" : "Product Tags",
     "Create Product Tag" : "Create Product Tag",
     "Updated At" : "Updated At",
-    "Update Product Tag" : "Update Product Tag"
+    "Update Product Tag" : "Update Product Tag",
+    "Create Product" : "Create Product",
+    "Product Name" : "Product Name",
+    "Select Categories" : "Select Categories",
+    "Select All" : "Select All",
+    "DeSelect All" : "DeSelect All",
+    "Upload Photos":"Upload Photos"
+
 
 
 }

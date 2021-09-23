@@ -37,6 +37,11 @@ Route::group(
 
 	     Route::group( [ 'prefix' => 'products','as' => 'mng.products.' ],function() {
     	     	Route::get('/', 'ProductController@index')->name('list');
+    	     	Route::get('/create', 'ProductController@create')->name('create');
+    	     	Route::post('/store', 'ProductController@store')->name('store');
+                Route::post('/media', 'ProductController@storeMedia')->name('storeMedia');
+             	Route::get('/check-slug', 'ProductController@checkSlug')->name('checkSlug');
+ 
 	     });
 
 	     Route::group( [ 'prefix' => 'product_tags','as' => 'mng.product_tags.' ],function() {

@@ -1,4 +1,5 @@
 @if($post->post_type=='video')
+
     @if($post->video_id != null)
 
         @if(isFileExist(@$post->videoThumbnail, @$post->videoThumbnail->big_image_two))
@@ -10,7 +11,7 @@
                     <video id='player' autoplay controls
                            poster="{{static_asset('default-image/default-730x400.png') }}">
                         @endif
-                        {{--                                                            $this->video->get_all_videos($id);--}}
+                        {{--$this->video->get_all_videos($id);--}}
                         @if($post->video->v_144p==null and
                             $post->video->v_240p==null and
                             $post->video->v_360p==null and
