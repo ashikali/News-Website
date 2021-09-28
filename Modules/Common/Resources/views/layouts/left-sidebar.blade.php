@@ -54,7 +54,7 @@
                                 	<ul class="nav flex-column">
 
                                         <li class="nav-item">
-                                            <a class="nav-link @yield('Products')" href="{{ route('mng.products.list') }}">
+                                            <a class="nav-link @yield('products')" href="{{ route('mng.products.list') }}">
                                                 {{__('products')}}
                                             </a>
                                         </li>

@@ -184,8 +184,6 @@ class HomeController extends Controller
             });
         endif;
 
-
-
         $tracker                 = new VisitorTracker();
         $tracker->page_type      = \App\Enums\VisitorPageType::HomePage;
         $tracker->url            = \Request::url();
@@ -196,5 +194,7 @@ class HomeController extends Controller
         $tracker->save();
 
         return view('site.pages.home', compact('primarySection','primarySectionPosts', 'categorySections', 'sliderPosts', 'video_posts', 'latest_posts', 'totalPostCount'));
+
     }
+
 }

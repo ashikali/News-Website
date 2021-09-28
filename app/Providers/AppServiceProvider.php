@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\View;
 use Modules\Language\Entities\LanguageConfig;
 use Modules\Language\Entities\Language;
 use Modules\Setting\Entities\Setting;
@@ -202,6 +203,9 @@ class AppServiceProvider extends ServiceProvider
             Config::set('laravellocalization.supportedLocales', $supportedLocales);
         endif;
 
+	View::composer(
+            'site.products.common', 'App\Http\View\Composers\FrontPageComposer'
+        ); 
         
 
     }

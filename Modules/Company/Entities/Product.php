@@ -4,10 +4,10 @@ namespace Modules\Company\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
-use \DateTimeInterface;
+use DateTimeInterface;
 
 
 class Product extends Model implements HasMedia {
@@ -23,10 +23,16 @@ class Product extends Model implements HasMedia {
 
     }
 
+    public static function last(){
+
+	return static::all()->last();
+
+    }
+
     public function registerMediaConversions(Media $media = null){
 
-        $this->addMediaConversion('thumb')->width(50)->height(50);
-        $this->addMediaConversion('showcase')->width(255)->height(150);
+        $this->addMediaConversion('thumb')->width(50)->height(50)->nonQueued();
+        $this->addMediaConversion('showcase')->width(255)->height(150)->nonQueued();
 
     }
 
@@ -36,6 +42,11 @@ class Product extends Model implements HasMedia {
 
     }
 
+    public function company(){
+
+	return $this->belongsTo(Company::class);
+
+    }
     public function categories(){
 
         return $this->belongsToMany(ProductCategory::class);
@@ -50,11 +61,12 @@ class Product extends Model implements HasMedia {
 
     public function getPhotoAttribute(){
 
-        $file = $this->getMedia('photo')->last();
+        $file = $this->getMedia()->last();
 
         if ($file) {
             $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
+            $file->showcase  = $file->getUrl('showcase');
         }
 
         return $file;

@@ -1,4 +1,3 @@
-{{--@php dd($tracks) @endphp--}}
 @extends('site.layouts.app')
 @section('style')
     <link rel="stylesheet" href="{{ static_asset('site/css/plyr.css') }}" />

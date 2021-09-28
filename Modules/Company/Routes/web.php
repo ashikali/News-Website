@@ -36,10 +36,12 @@ Route::group(
     	     });
 
 	     Route::group( [ 'prefix' => 'products','as' => 'mng.products.' ],function() {
-    	     	Route::get('/', 'ProductController@index')->name('list');
-    	     	Route::get('/create', 'ProductController@create')->name('create');
-    	     	Route::post('/store', 'ProductController@store')->name('store');
-                Route::post('/media', 'ProductController@storeMedia')->name('storeMedia');
+    	     	Route::get('/','ProductController@index')->name('list');
+    	     	Route::get('/create','ProductController@create')->name('create');
+    	     	Route::post('/store','ProductController@store')->name('store');
+                Route::post('/media','ProductController@storeMedia')->name('storeMedia');
+                Route::get('/edit/{product}','ProductController@edit')->name('edit');
+                Route::put('/update/{product}','ProductController@update')->name('update');
              	Route::get('/check-slug', 'ProductController@checkSlug')->name('checkSlug');
  
 	     });

@@ -25,8 +25,8 @@ class ProductController extends Controller {
  	
     public function index(){
 
-	return storage_path('tmp');
-       # return view('company::index');
+       $products = Product::with(['company','categories','tags'])->paginate(15);
+       return view('company::product.index',compact('products'));
 
     }
 
@@ -53,7 +53,7 @@ class ProductController extends Controller {
 	$id = Sentinel::getUser()->id;
 
 	foreach($files as $in => $file)
-            $product->addMedia(storage_path("tmp/uploads/{$id}/{$file}"))->toMediaCollection('photo');
+            $product->addMedia(storage_path("tmp/uploads/{$id}/{$file}"))->toMediaCollection();
 
 	$attributes = $request->input('attributes',[]);
 
@@ -68,7 +68,7 @@ class ProductController extends Controller {
 
 	$product->attributes()->createMany($attributes_arr);
 
-	return redirect()->route('admin.products.index');
+	return redirect()->route('mng.products.list');
 
 
     }

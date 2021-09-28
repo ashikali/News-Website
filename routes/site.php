@@ -99,5 +99,14 @@ Route::group(
 		Route::get('login/{provider}', 'SocialController@redirect');
 		Route::get('login/{provider}/callback', 'SocialController@Callback');
 
+		Route::group(['prefix' => 'products','as' => 'products.' ], function(){
+
+		   Route::get('/','ProductController@index')->name('list');
+		   Route::get('/{category}/{childCategory?}/{childCategory2?}','ProductController@category')->name('category');
+		   Route::get('/{category}/{childCategory}/{childCategory2}/{productSlug}/{product}','ProductController@product')->name('product');
+
+		});
+ 
+
 	 }
 );

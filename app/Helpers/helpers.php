@@ -53,7 +53,7 @@ if (!function_exists('basePath')) {
     {
 
         if (!blank($image)):
-            if ($image->disk    == 'local') :
+            if ($image->disk    == 'local' || $image->disk == 'media' ) :
 
                 //return public_path();
 

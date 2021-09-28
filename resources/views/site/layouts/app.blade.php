@@ -20,18 +20,22 @@
     <noscript><link  rel="stylesheet" href="{{static_asset('site/css/magnific-popup.min.css') }}"></noscript>
     <link rel="preload" href="{{static_asset('site/css/animate.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link  rel="stylesheet" href="{{static_asset('site/css/animate.min.css') }}"></noscript>
+
     <link rel="preload" href="{{static_asset('site/css/slick.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link  rel="stylesheet" href="{{static_asset('site/css/slick.min.css') }}"></noscript>
-    <link rel="preload" href="{{static_asset('site/css/structure.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link  rel="stylesheet" href="{{static_asset('site/css/structure.min.css') }}"></noscript>
+
+   <link rel="preload" href="{{static_asset('site/css/structure.min.css')}}?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'">
+   <noscript><link  rel="stylesheet" href="{{static_asset('site/css/structure.min.css')}}?v=1"></noscript>
+
     <link rel="preload" href="{{static_asset('site/css/main.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link  rel="stylesheet" href="{{static_asset('site/css/main.css') }}"></noscript>
+
     @if($language->text_direction == "RTL")
         <link rel="preload" href="{{static_asset('site/css/rtl.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link  rel="stylesheet" href="{{static_asset('site/css/rtl.min.css') }}"></noscript>
     @endif
-    <link rel="preload" href="{{static_asset('site/css/custom.css') }}?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link  rel="stylesheet" href="{{static_asset('site/css/custom.css')}}?v=1"></noscript>
+    <link rel="preload" href="{{static_asset('site/css/custom.css') }}?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link  rel="stylesheet" href="{{static_asset('site/css/custom.css')}}?v=2"></noscript>
   <link rel="preload" href="{{static_asset('site/css/responsive.min.css')}}?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link  rel="stylesheet" href="{{static_asset('site/css/responsive.min.css')}}?v=1"></noscript>
 
