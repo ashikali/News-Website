@@ -11,6 +11,7 @@ use Modules\Company\Entities\Product;
 use Modules\Company\Entities\Company;
 use Modules\Common\Http\Controllers\Traits\MediaUploadingTrait;
 use Modules\Company\Http\Requests\StoreProductRequest;
+use Modules\Company\Http\Requests\UpdateProductRequest;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Support\Facades\Auth;
@@ -32,13 +33,15 @@ class ProductController extends Controller {
 
     public function create(){
 
-	$categories = ProductCategory::with('parentCategory.parentCategory')
-            ->whereHas('parentCategory.parentCategory')
+	$categories = ProductCategory::has('parentCategory.parentCategory')
             ->get();
 
         $tags = ProductTag::all()->pluck('name','id');
+
+	$flags = Product::selectFlags();
+
 	
-        return view('company::product.create',compact('categories','tags'));
+        return view('company::product.create',compact('categories','tags','flags'));
 
     }
 
@@ -85,9 +88,18 @@ class ProductController extends Controller {
      * @param int $id
      * @return Response
      */
-    public function edit($id){
+    public function edit(Product $product){
 
-        return view('company::edit');
+	$items = $product->getMedia();
+
+	dd($items);
+
+	/*
+	$categories = ProductCategory::has('parentCategory.parentCategory')
+        	      ->get();
+        $tags = ProductTag::all()->pluck('name','id');
+	$flags = Product::selectFlags();
+	return view('company::product.edit',compact('product','tags','flags','categories')); */
 
     }
 
@@ -97,7 +109,9 @@ class ProductController extends Controller {
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id){
+    public function update(UpdateProductRequest $product,Request $request){
+
+
 
 
     }

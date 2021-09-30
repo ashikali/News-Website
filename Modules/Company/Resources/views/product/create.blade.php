@@ -64,12 +64,18 @@
                        </div>
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="name" class="col-form-label">{{ __('company_name') }}*</label>
+                                <label for="company_id" class="col-form-label">{{ __('Company') }}</label>
 				 <select class="form-control" name="company_id" required id="company_select">
-					<option></option>
                                 </select>
                             </div>
                         </div>
+
+			<div class="col-sm-12">
+			 <div class="form-group">
+			{!! Form::Label('flag','Flag') !!}
+    			{!! Form::select('flag',$flags,null,['class' => 'form-control']) !!} 
+			 </div>
+			</div>
 			<div class="col-sm-12">
 			   <div class="form-group">
                			 <label for="categories" class="col-form-label">{{ __('Select Categories') }}</label>

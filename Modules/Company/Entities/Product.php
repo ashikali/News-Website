@@ -14,7 +14,7 @@ class Product extends Model implements HasMedia {
 
     use  HasMediaTrait, Sluggable;
  
-    protected $fillable = ["company_id","name","description","slug"];
+    protected $fillable = ["company_id","name","description","slug","flag"];
       
 
     protected function serializeDate(DateTimeInterface $date){
@@ -70,6 +70,13 @@ class Product extends Model implements HasMedia {
         }
 
         return $file;
+
+    }
+
+    public Static function selectFlags(){
+
+	return [ "Normal" => "Normal","Sponsored" => "Sponsored" ,"Advertisment" => "Advertisement" ];
+
 
     }
 

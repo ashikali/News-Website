@@ -64,7 +64,7 @@
 				   <div class="row">
 					<div class="col-12 text-right">
 						 <a href="{{route('mng.products.create')}}" class="btn btn-primary btn-sm"><i
-                                                   class="m-r-10 mdi mdi-plus"></i>{{__('Add_Product')}}</a>
+                                                   class="m-r-10 mdi mdi-plus"></i>{{__('Add Product')}}</a>
                                         </div>
                                    </div>
                                 </div>

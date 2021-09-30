@@ -21,7 +21,7 @@
     <div class="dashboard-ecommerce">
         <div class="container-fluid dashboard-content ">
             <!-- page info start-->
-	    {!!  Form::open(['route' => 'mng.products.store', 'method' => 'post', 'enctype' => 'multipart/form-data',
+	    {!!  Form::open(['route' => [ 'mng.products.update',$product->id ], 'method' => 'post', 'enctype' => 'multipart/form-data',
 			   'id' => 'dropzone-form' ]) !!}
 
             <div class="row clearfix">
@@ -58,18 +58,25 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="name" class="col-form-label">{{ __('Product Name') }}</label>
-                                <input id="name" name="name" value="{{ old('name') }}" required type="text"
+                                <input id="name" name="name" value="{{ old('name',$product->name) }}" required type="text"
                                        class="form-control">
                             </div>
                        </div>
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="name" class="col-form-label">{{ __('company_name') }}*</label>
+                                <label for="company_id" class="col-form-label">{{ __('Company') }}*</label>
 				 <select class="form-control" name="company_id" required id="company_select">
-					<option></option>
+					<option value="{{$product->company_id}}" selected>{{$product->company->name}}</option>
                                 </select>
                             </div>
                         </div>
+
+			<div class="col-sm-12">
+			 <div class="form-group">
+			{!! Form::Label('flag','Flag') !!}
+    			{!! Form::select('flag',$flags,null,['class' => 'form-control']) !!} 
+			 </div>
+			</div>
 			<div class="col-sm-12">
 			   <div class="form-group">
                			 <label for="categories" class="col-form-label">{{ __('Select Categories') }}</label>
@@ -79,11 +86,11 @@
                		 <span class="btn btn-info deselect-all"  style="border-radius: 0">{{ __('DeSelect All') }}</span>
 
                			 </div>
-				 <select class="form-control select2" 
-					 name="categories[]" id="categories" required multiple>
-               			     @foreach($categories as $category)
-               			         <option value="{{ $category->id }}" {{ in_array($category->id, old('categories', [])) ? 'selected' : '' }}>{{ $category->parentCategory->parentCategory->name }} / {{ $category->parentCategory->name }} / {{ $category->name }}</option>
-               			     @endforeach
+				 <select class="form-control select2" name="categories[]" id="categories" required multiple>
+					 @foreach($categories as $category)
+                        <option value="{{ $category->id }}" {{ (in_array($category->id, old('categories', [])) || $product->categories->contains($category->id)) ? 'selected' : '' }}>{{ $category->parentCategory->parentCategory->name }} / {{ $category->parentCategory->name }} / {{ $category->name }}</option>
+                   			 @endforeach
+
                			 </select>
            		  </div> 
 			</div>
@@ -98,10 +105,9 @@
                			 </div>
 				 <select class="form-control select2" 
 					 name="tags[]" id="tags" multiple>
-               			     @foreach($tags as $id => $tag)
-					 <option value="{{ $id }}" {{ in_array($id, old('tags', [])) ? 'selected' : '' }}>
-						{{$tag}}
-					 </option>
+					@foreach($tags as $id => $tag)
+       					  <option value="{{ $id }}" {{ (in_array($id, old('tags', [])) || $product->tags->contains($id)) ? 'selected' : '' }}>{{ $tag }}</option>
+	
                			     @endforeach
                			 </select>
            		  </div> 
@@ -111,7 +117,7 @@
                               <div class="form-group">
                                         <label class="required" for="slug">{{ __('slug') }}</label>
                                         <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" 
-                                               type="text" name="slug" id="slug" value="{{ old('slug', '') }}" required>
+                                               type="text" name="slug" id="slug" value="{{ old('slug',$product->slug) }}" required>
                               </div>
                         </div>
 
