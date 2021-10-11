@@ -15,10 +15,6 @@ class UpdateProductRequest extends FormRequest
     {
 
 	 return [
-            'name'         => [
-                'required'],
-            'price'        => [
-                'required'],
             'categories.*' => [
                 'integer'],
             'categories'   => [
@@ -29,7 +25,7 @@ class UpdateProductRequest extends FormRequest
                 'array'],
             'slug'         => [
                 'required',
-                'unique:products,slug,' . $this->product->id],
+                'unique:products,slug,' . request()->route('product')->id ],
         ];
  
 

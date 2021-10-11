@@ -9,8 +9,6 @@ class StoreProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'         => [
-                'required'],
             'categories.*' => [
                 'integer'],
             'categories'   => [

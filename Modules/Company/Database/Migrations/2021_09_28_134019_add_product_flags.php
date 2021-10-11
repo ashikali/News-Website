@@ -15,7 +15,7 @@ class AddProductFlags extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
 
-            $table->string('flag')->default('normal')->after('name');
+            $table->string('flag')->default('Normal')->after('name');
 
         });
     }

@@ -1,5 +1,4 @@
 <?php
-
 namespace Modules\Company\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -18,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use Debugbar;
 use Sentinel;
+use File;
 
 
 class ProductController extends Controller {
@@ -27,20 +27,16 @@ class ProductController extends Controller {
     public function index(){
 
        $products = Product::with(['company','categories','tags'])->paginate(15);
+
        return view('company::product.index',compact('products'));
 
     }
 
     public function create(){
 
-	$categories = ProductCategory::has('parentCategory.parentCategory')
-            ->get();
-
+	$categories = ProductCategory::has('parentCategory.parentCategory')->get();
         $tags = ProductTag::all()->pluck('name','id');
-
 	$flags = Product::selectFlags();
-
-	
         return view('company::product.create',compact('categories','tags','flags'));
 
     }
@@ -55,8 +51,11 @@ class ProductController extends Controller {
 
 	$id = Sentinel::getUser()->id;
 
-	foreach($files as $in => $file)
-            $product->addMedia(storage_path("tmp/uploads/{$id}/{$file}"))->toMediaCollection();
+	$path = storage_path("tmp/uploads/{$id}");
+	foreach($files as $in => $file){
+            $product->addMedia($path.'/'.$file)->toMediaCollection();
+	    File::delete("tmp/uploads/{$id}/{$file}");
+	}
 
 	$attributes = $request->input('attributes',[]);
 
@@ -90,16 +89,23 @@ class ProductController extends Controller {
      */
     public function edit(Product $product){
 
-	$items = $product->getMedia();
+	$items = $product->getMedia();$images = [];
 
-	dd($items);
+	foreach($items as $in => $item){
 
-	/*
+		$images[] = Array( "name" => $item->file_name,
+			      "url" => basePath($item).$item->getUrl(),
+			      "thumb" => basePath($item).$item->getUrl('showcase'),
+			      "size" =>  $item->size,
+	       	);
+			 
+	}
 	$categories = ProductCategory::has('parentCategory.parentCategory')
         	      ->get();
         $tags = ProductTag::all()->pluck('name','id');
 	$flags = Product::selectFlags();
-	return view('company::product.edit',compact('product','tags','flags','categories')); */
+
+	return view('company::product.edit',compact('product','tags','flags','categories','images')); 
 
     }
 
@@ -109,9 +115,47 @@ class ProductController extends Controller {
      * @param int $id
      * @return Response
      */
-    public function update(UpdateProductRequest $product,Request $request){
+    public function update(UpdateProductRequest $request,Product $product){
 
 
+        $product->update($request->all());
+        $product->categories()->sync($request->input('categories', []));
+        $product->tags()->sync($request->input('tags', []));
+
+	$id = Sentinel::getUser()->id;
+
+	$files = explode(",",$request->input('files'));
+	foreach($files as $in => $file){
+	    if(!empty($file)){
+            	$product->addMedia(storage_path("tmp/uploads/{$id}/{$file}"))->toMediaCollection();
+		File::delete("tmp/uploads/{$id}/{$file}");
+	    }
+	}
+
+	//delete any removed files 
+	if($request->has('dfiles')){
+		$dfiles = $request->input('dfiles');
+		foreach($dfiles as $in => $file){ //deleted server files
+		     $media = $product->getMedia()->where('file_name',$file)->first();
+		     $media->delete();
+		}
+	}
+
+	$attributes = $request->input('attributes',[]);
+
+	$attributes_arr = Array();
+	foreach($attributes as $in => $pair){
+
+		$key_value = explode(",",$pair);
+		$attributes_arr[] = Array( "field_name" => $key_value[0],
+					   "value" => $key_value[1] );
+		
+	}
+
+	$product->attributes()->delete();
+	$product->attributes()->createMany($attributes_arr);
+
+	return redirect()->route('mng.products.list');
 
 
     }

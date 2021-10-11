@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Company\Entities\Product;
 use Modules\Company\Entities\ProductCategory;
+use Debugbar;
 
 
 class ProductController extends Controller {
@@ -13,11 +14,18 @@ class ProductController extends Controller {
  public function index(){
 
         $products = Product::with('categories.parentCategory.parentCategory')
+		    ->where('flag','Normal')
             	    ->inRandomOrder()
-            	    ->take(15)
+            	    ->take(16)
             	    ->get();
 
-        return view('site.products.index', compact('products'));
+	$sponsored = Product::with('categories.parentCategory.parentCategory')
+		    ->where('flag','Sponsored')
+            	    ->inRandomOrder()
+            	    ->take(12)
+            	    ->get();
+
+        return view('site.products.index', compact('products','sponsored'));
 
  }	
 
@@ -46,12 +54,17 @@ class ProductController extends Controller {
         }
 
         $products = Product::whereHas('categories', function ($query) use ($ids) {
-                $query->whereIn('id', $ids);
+                $query->whereIn('id', $ids)->where('flag','Normal');
             })
-            ->with('categories.parentCategory.parentCategory')
-            ->paginate(9);
+            ->with('categories.parentCategory.parentCategory')->get();
 
-        return view('site.products.index', compact('products', 'selectedCategories'));
+
+        $sponsored = Product::whereHas('categories', function ($query) use ($ids) {
+                $query->whereIn('id', $ids)->where('flag','Sponsored');
+            })
+            ->with('categories.parentCategory.parentCategory')->get();
+
+        return view('site.products.index', compact('products', 'sponsored','selectedCategories'));
 
 
     }
@@ -73,7 +86,14 @@ class ProductController extends Controller {
             ];
         }
 
-        return view('site.products.show', compact('product', 'selectedCategories'));
+        $ids = $product->categories->pluck('id');
+        $adv_products = Product::whereHas('categories', function ($query) use ($ids) {
+                $query->whereIn('id', $ids)->where('flag','Advertisment');
+            })->with('categories.parentCategory.parentCategory')->get();
+
+	Debugbar::info(count($adv_products));
+
+        return view('site.products.show', compact('product','adv_products','selectedCategories'));
     }
    
 

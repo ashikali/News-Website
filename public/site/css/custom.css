@@ -1229,3 +1229,32 @@ label.btn.btn-primary {
   	 max-width: 1380px;	
    }
 }
+
+.col-carousel {
+        margin: 70px 0;
+}
+
+/* owl nav */
+.owl-prev span, .owl-next span {
+        color: var(--primary-color)
+}
+
+.owl-prev span:hover,
+.owl-next span:hover {
+        color: #8199A3;
+}
+
+.owl-prev, .owl-next {
+        position: absolute;
+        top: 0;
+        height: 100%;
+}
+
+.owl-prev {
+        left: 7px;
+}
+
+.owl-next {
+        right: 7px;
+}
+

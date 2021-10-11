@@ -24,6 +24,7 @@
 	    {!!  Form::open(['route' => [ 'mng.products.update',$product->id ], 'method' => 'post', 'enctype' => 'multipart/form-data',
 			   'id' => 'dropzone-form' ]) !!}
 
+            @method('PUT')
             <div class="row clearfix">
                 <div class="col-12">
                     @if(session('error'))
@@ -52,7 +53,7 @@
 
                         <div class="block-header">
                             <div class="form-group">
-                                <h4 class="border-bottom">{{ __('Create Product') }}</h4>
+                                <h4 class="border-bottom">{{ __('Update Product') }}</h4>
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -160,8 +161,8 @@
 			 <div class="row p-l-15">
                               <div class="col-12">
                                   <label for="post_content" class="col-form-label">{{ __('content') }}*</label>
-                                  <textarea name="description" value="{{ old('descripton') }}" id="post_content"
-                                            cols="30" rows="5"></textarea>
+                                  <textarea name="description" id="post_content"
+                                            cols="30" rows="5">{!! old('description',$product->description)!!}</textarea>
                               </div>
                          </div>
 
@@ -172,7 +173,7 @@
 					    class="btn btn-primary float-right m-t-20">
 					    <i
                                             class="fa fa-paper-plane"
-                                            aria-hidden="true"></i> {{ __('create') }}</button>
+                                            aria-hidden="true"></i> {{ __('Update') }}</button>
                                 </div>
                             </div>
                         </div>
@@ -235,7 +236,7 @@ var myDropzone = new Dropzone("#dropzone", {
     paramName: "file",
     autoProcessQueue : false,
     acceptedFiles: "image/*",
-    maxFiles: 5,
+    maxFiles: 50,
     maxFilesize: 3, // MB
     uploadMultiple: true,
     parallelUploads: 100, // use it with uploadMultiple
@@ -252,14 +253,48 @@ var myDropzone = new Dropzone("#dropzone", {
     dictRemoveFile: "Remove",
     dictMaxFilesExceeded: "Only 5 files are allowed",
     dictDefaultMessage: "Drop files here to upload",
+    init: function () {
+
+		/*
+		var images =  @json($images);
+		for(let i = 0; i < images.length; i++) {
+		  
+  		  let img = images[i];
+  		  var mockFile = {name: img.name, size: img.size, url: img.url,accepted: true};
+  		  this.emit("addedfile", mockFile);
+  		  this.emit("thumbnail", mockFile, img.thumb);
+  		  this.emit("complete", mockFile);
+  		  var existingFileCount = 1; 
+  		  this.files.push(mockFile);
+
+               		 var mockFile = {
+               		     name: 'FileName',
+               		     size: '1000', 
+               		     type: 'image/jpeg',
+               		     accepted: true            // required if using 'MaxFiles' option
+               		 };
+               		 this.files.push(mockFile);    // add to files array
+               		 this.emit("addedfile", mockFile);
+               		 this.emit("thumbnail", mockFile, 'http://url/to/file');
+			 this.emit("complete", mockFile); 
+
+    		 } */
+
+
+            }  
+
 });
 
 myDropzone.on("addedfile", function(file) {
-   // console.log(file);
+    //console.log(file);
 });
 
 myDropzone.on("removedfile", function(file) {
-    // console.log(file);
+    //console.log(file);
+    if(typeof file.status == "undefined"){  //avoid any recently uploaded not from server
+    $('#dropzone-form').append('<input type="hidden" name="dfiles[]" value="' + file.name + '">');
+    }
+
 });
 
 // Add mmore data to send along with the file as POST data. (optional)
@@ -283,8 +318,9 @@ $('#submit-dropzone').click(function (e) {
 
     e.preventDefault();
     e.stopPropagation(); 
-    if( myDropzone.files != "" )
+    if( myDropzone.files != "" ){
         myDropzone.processQueue();
+    }
     else
        $('#dropzone-form').submit(); //error checking be happened after form submit
 	
@@ -321,6 +357,20 @@ $('#name').change(function(e) {
     );
 });
 
+var images =  @json($images);
+
+for(let i = 0; i < images.length; i++) {
+
+    let img = images[i];
+    var mockFile = {name: img.name, size: img.size, url: img.url};
+    myDropzone.emit("addedfile", mockFile);
+    myDropzone.emit("thumbnail", mockFile, img.thumb);
+    myDropzone.emit("complete", mockFile);
+	 
+    var existingFileCount = 1; 
+    myDropzone.options.maxFiles = myDropzone.options.maxFiles - existingFileCount;
+
+}
 
 </script>
 

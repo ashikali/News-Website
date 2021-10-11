@@ -10,14 +10,18 @@
     <title>{{settingHelper('seo_title')}}</title>
 
     {{-- CSS --}}
-    <link rel="preload" href="{{static_asset('site/css/bootstrap.min.css') }}?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link  rel="stylesheet" href="{{static_asset('site/css/bootstrap.min.css') }}"></noscript>
-    <link rel="preload" href="{{static_asset('site/css/font-awesome.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="{{static_asset('site/css/bootstrap.min.css') }}?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link  rel="stylesheet" href="{{static_asset('site/css/bootstrap.min.css') }}"></noscript>
+
+   <link rel="preload" href="{{static_asset('site/css/font-awesome.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link  rel="stylesheet" href="{{static_asset('site/css/font-awesome.min.css') }}"></noscript>
+
     <link rel="preload" href="{{static_asset('site/css/icon.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link  rel="stylesheet" href="{{static_asset('site/css/icon.min.css') }}"></noscript>
-    <link rel="preload" href="{{static_asset('site/css/magnific-popup.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link  rel="stylesheet" href="{{static_asset('site/css/magnific-popup.min.css') }}"></noscript>
+
+ <link rel="preload" href="{{static_asset('site/css/magnific-popup.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+ <noscript><link  rel="stylesheet" href="{{static_asset('site/css/magnific-popup.min.css') }}"></noscript>
+
     <link rel="preload" href="{{static_asset('site/css/animate.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link  rel="stylesheet" href="{{static_asset('site/css/animate.min.css') }}"></noscript>
 
@@ -34,8 +38,8 @@
         <link rel="preload" href="{{static_asset('site/css/rtl.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link  rel="stylesheet" href="{{static_asset('site/css/rtl.min.css') }}"></noscript>
     @endif
-    <link rel="preload" href="{{static_asset('site/css/custom.css') }}?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link  rel="stylesheet" href="{{static_asset('site/css/custom.css')}}?v=2"></noscript>
+    <link rel="preload" href="{{static_asset('site/css/custom.css') }}?v=4" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link  rel="stylesheet" href="{{static_asset('site/css/custom.css')}}?v=4"></noscript>
   <link rel="preload" href="{{static_asset('site/css/responsive.min.css')}}?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link  rel="stylesheet" href="{{static_asset('site/css/responsive.min.css')}}?v=1"></noscript>
 
