@@ -102,6 +102,14 @@
                             </div>
                         </div>
 
+			<div class="col-sm-12">
+                              <div class="form-group">
+                                        <label class="required" for="slug">{{ __('slug') }}</label>
+                                        <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" 
+                                               type="text" name="slug" id="slug" value="{{ old('slug', $company->slug ) }}" required>
+                              </div>
+                        </div>
+  	
                         <div class="row p-l-15">
                         	 <div class="col-12">
 					<div class="form-group">
@@ -116,7 +124,7 @@
 				                <img src="{{static_asset($company->profile_image)}}" data-index="0"
 				                     height="200" width="200" alt="img">
 				            @else
-				                <img src="{{static_asset('default-image/user.jpg') }}" height="200" width="200" data-index="0" alt="user" class="img-responsive ">
+				                <img src="{{static_asset('default-image/default.jpg') }}" height="200" width="200" data-index="0" alt="user" class="img-responsive ">
 				            @endif
 				        </div>
 				</div>
@@ -142,3 +150,17 @@
     </div>
 
 @endsection
+@push('include_js')
+<script type="text/javascript">
+$('#name').change(function(e) {
+    $.get('{{ route('mng.companies.checkSlug') }}',
+        { 'name': $(this).val() },
+        function( data ) {
+            $('#slug').val(data.slug);
+        }
+    );
+});
+</script>
+@endpush
+
+

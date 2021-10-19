@@ -203,10 +203,6 @@ class AppServiceProvider extends ServiceProvider
             Config::set('laravellocalization.supportedLocales', $supportedLocales);
         endif;
 
-	View::composer(
-            'site.products.common', 'App\Http\View\Composers\FrontPageComposer'
-        ); 
-        
 
     }
 }

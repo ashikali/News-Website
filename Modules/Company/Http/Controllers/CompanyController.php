@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Company\Entities\Company;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Carbon\Carbon;
 use Validator;
 use Image;
@@ -172,6 +173,15 @@ class CompanyController extends Controller {
         return response()->json($posts);
 
     }
+
+
+     public function checkSlug(Request $request){
+
+        $slug = SlugService::createSlug(Company::class, 'slug', $request->name);
+        return response()->json(['slug' => $slug]);
+
+    }
+ 	
   
 
 

@@ -70,5 +70,14 @@ class ViewServiceProvider extends ServiceProvider
             'App\Http\View\Composers\LanguageComposer'
         );
 
+	 View::composer(
+           [  'site.products.common' ], 'App\Http\View\Composers\FrontPageComposer'
+        );
+
+	 View::composer(
+           [  'site.companies.common' ], 'App\Http\View\Composers\FrontPageCompanyComposer'
+        );
+ 
+
     }
 }

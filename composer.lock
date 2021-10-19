@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f79170e3e62c15099b03d8a8d343f4f3",
+    "content-hash": "f7050196d18c24bf6dd0c38b70a9c33e",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -6175,6 +6175,60 @@
                 "source": "https://github.com/spatie/temporary-directory/tree/1.3.0"
             },
             "time": "2020-11-09T15:54:21+00:00"
+        },
+        {
+            "name": "staudenmeir/belongs-to-through",
+            "version": "v2.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/staudenmeir/belongs-to-through.git",
+                "reference": "88a0dbb0f8abf0466e723b7578c798339c65d6ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/staudenmeir/belongs-to-through/zipball/88a0dbb0f8abf0466e723b7578c798339c65d6ca",
+                "reference": "88a0dbb0f8abf0466e723b7578c798339c65d6ca",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^6.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0|^9.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Znck\\Eloquent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rahul Kadyan",
+                    "email": "hi@znck.me"
+                },
+                {
+                    "name": "Jonas Staudenmeir",
+                    "email": "mail@jonas-staudenmeir.de"
+                }
+            ],
+            "description": "Laravel Eloquent BelongsToThrough relationships",
+            "support": {
+                "issues": "https://github.com/staudenmeir/belongs-to-through/issues",
+                "source": "https://github.com/staudenmeir/belongs-to-through/tree/v2.9.1"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/JonasStaudenmeir",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-11-16T19:52:40+00:00"
         },
         {
             "name": "stichoza/google-translate-php",

@@ -13,13 +13,13 @@ class ProductController extends Controller {
 
  public function index(){
 
-        $products = Product::with('categories.parentCategory.parentCategory')
+        $products = Product::has('categories.parentCategory.parentCategory')
 		    ->where('flag','Normal')
             	    ->inRandomOrder()
             	    ->take(16)
             	    ->get();
 
-	$sponsored = Product::with('categories.parentCategory.parentCategory')
+	$sponsored = Product::has('categories.parentCategory.parentCategory')
 		    ->where('flag','Sponsored')
             	    ->inRandomOrder()
             	    ->take(12)
@@ -90,8 +90,6 @@ class ProductController extends Controller {
         $adv_products = Product::whereHas('categories', function ($query) use ($ids) {
                 $query->whereIn('id', $ids)->where('flag','Advertisment');
             })->with('categories.parentCategory.parentCategory')->get();
-
-	Debugbar::info(count($adv_products));
 
         return view('site.products.show', compact('product','adv_products','selectedCategories'));
     }

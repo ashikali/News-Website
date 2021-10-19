@@ -106,6 +106,14 @@ Route::group(
 		   Route::get('/{category}/{childCategory}/{childCategory2}/{productSlug}/{product}','ProductController@product')->name('product');
 
 		});
+
+		Route::group(['prefix' => 'companies','as' => 'companies.' ], function(){
+
+		   Route::get('/','CompanyController@index')->name('list');
+		   Route::get('/{category}/{childCategory?}/{childCategory2?}','CompanyController@category')->name('category');
+		   Route::get('/{category}/{childCategory}/{childCategory2}/{productSlug}/{product}','CompanyController@company')->name('company');
+
+		});
  
 
 	 }

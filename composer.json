@@ -34,6 +34,7 @@
         "spatie/laravel-feed": "^2.7",
         "spatie/laravel-medialibrary": "^7.19",
         "spatie/laravel-sitemap": "^5.8",
+        "staudenmeir/belongs-to-through": "^2.5",
         "tymon/jwt-auth": "1.0.0-rc.5",
         "yajra/laravel-datatables-oracle": "^9.18"
     },

@@ -102,7 +102,7 @@ class ProductController extends Controller {
 	}
 	$categories = ProductCategory::has('parentCategory.parentCategory')
         	      ->get();
-        $tags = ProductTag::all()->pluck('name','id');
+        $tags  = ProductTag::all()->pluck('name','id');
 	$flags = Product::selectFlags();
 
 	return view('company::product.edit',compact('product','tags','flags','categories','images')); 

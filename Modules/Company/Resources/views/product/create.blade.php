@@ -117,7 +117,7 @@
                               <div class="form-group">
                                         <label class="required" for="slug">{{ __('slug') }}</label>
                                         <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" 
-                                               type="text" name="slug" id="slug" value="{{ old('slug', '') }}" required>
+                                               type="text" name="slug" id="slug" value="{{ old('slug','') }}" required>
                               </div>
                         </div>
 

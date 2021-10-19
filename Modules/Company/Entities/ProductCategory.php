@@ -9,7 +9,8 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class ProductCategory extends Model {
 
 
-    use Sluggable;
+    use Sluggable,\Znck\Eloquent\Traits\BelongsToThrough;
+
 
     protected $fillable = [
      			   'name',
@@ -34,6 +35,7 @@ class ProductCategory extends Model {
         return $this->belongsToMany(Product::class);
 
     }
+
 
     public function sluggable(){
         return [

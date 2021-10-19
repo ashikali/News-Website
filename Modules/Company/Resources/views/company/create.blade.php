@@ -81,10 +81,17 @@
                                          type="file" class="form-control d-none" accept="image/*">
                               </div>
                         </div>
+		       <div class="col-sm-12">
+                              <div class="form-group">
+                                    <label class="required" for="slug">{{ __('slug') }}</label>
+                                    <input class="form-control {{ $errors->has('slug') ? 'is-invalid' : '' }}" 
+                                           type="text" name="slug" id="slug" value="{{ old('slug', '') }}" required>
+                              </div>
+                       </div>
 			<div class="col-sm-12">
                            <div class="form-group">
                                <div class="form-group text-center">
-                                   <img src="{{static_asset('default-image/user.jpg') }} " data-index="0"
+                                   <img src="{{static_asset('default-image/default.jpg') }} " data-index="0"
                                         width="200" height="200" alt="image"
                                         class="img-responsive img-thumbnail">
                                </div>
@@ -131,3 +138,17 @@
     </div>
 
 @endsection
+
+@push('include_js')
+<script type="text/javascript">
+$('#name').change(function(e) {
+    $.get('{{ route('mng.companies.checkSlug') }}',
+        { 'name': $(this).val() },
+        function( data ) {
+            $('#slug').val(data.slug);
+        }
+    );
+});
+</script>
+@endpush
+

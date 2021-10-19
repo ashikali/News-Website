@@ -25,6 +25,7 @@ Route::group(
     	     	Route::get('/edit/{company}', 'CompanyController@edit')->name('edit');
     	     	Route::post('/update/{company}', 'CompanyController@update')->name('update');
              	Route::get('/search/company', 'CompanyController@searchCompany')->name('search');
+             	Route::get('/check-slug', 'CompanyController@checkSlug')->name('checkSlug');
     	     });
 
 	     Route::group( [ 'prefix' => 'addresses','as' => 'mng.addresses.' ],function() {
